@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>Document</title>
 </head>
 <body>
+<header>
+    <div class="boxtitle2">
+        <h1>Create an account</h1>
+    </div>
+</header>
 <main>
-    <form action="/submit-data" method="post">
-        <label for="username">Enter your username:</label>
-        <input type="text" id="username" name="username">
-        <label for="username">Enter your email:</label>
-        <input type="email" id="email" name="email">
-        <label for="password">Enter your password:</label>
-        <input type="password" id="password" name="password">
-        <button type="submit">submit</button>
-    </form>
-    <p>if you have an account already please press this button</p>
-    <a href="login2.html"><button>login</button></a>
+    <div class="centered-form">
+        <form action="/submit-data" method="post">
+          <div class="form-group">
+          <label for="username">Enter your username:</label>
+          <input type="text" id="username" name="username">
+          </div>
+          <div class="form-group">
+          <label for="username">Enter your email:</label>
+          <input type="email" id="email" name="email">
+          </div>
+          <div class="form-group">
+          <label for="password">Enter your password:</label>
+          <input type="password" id="password" name="password">
+          </div>
+          <button type="submit" class="animated-button">submit</button>
+        </form>
+      </div>
 </main>
 </body>
 </html>

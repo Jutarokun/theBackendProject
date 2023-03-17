@@ -36,6 +36,10 @@ app.get("/login2.html", function (req, res) {
     res.sendFile(__dirname + "/public/login2.html");
   });
 
+  app.get("/login.html", function (req, res) {
+    res.sendFile(__dirname + "/public/login.html");
+  });
+
 //taking the data from the frontend
 
 app.post('/submit-data', function(req, res) {
@@ -78,7 +82,7 @@ app.post('/submit-data', function(req, res) {
                 if (!username_exists && !email_exists) {
                     console.log('creating a user');
                     db.run(`INSERT INTO users (username, email, password) VALUES (?, ?, ?)`, [username, email, password]);
-                    res.send('Your user has been created');
+                    res.sendFile(__dirname + "/public/login2.html")
                 }
             });
         }
@@ -100,7 +104,7 @@ app.post('/submit-login-data', function(req, res) {
                     console.error(err.message);
                 } else if (result) {
                     console.log(`${email} and password are correct.`);
-                    res.send('You are logged in now');
+                    res.sendFile(__dirname + '/public/index.html');
                 } else {
                     console.log('Password is incorrect.');
                 }
