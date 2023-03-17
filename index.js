@@ -6,8 +6,8 @@ const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
-let username_exists = true;
-let email_exists = true;
+let login_email_exists = false;
+let login_password_exists = false;
 
 app.use(express.static("/public"));
 
@@ -32,6 +32,10 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/public/login.html");
 });
 
+app.get("/login2.html", function (req, res) {
+    res.sendFile(__dirname + "/public/login2.html");
+  });
+
 //taking the data from the frontend
 
 app.post('/submit-data', function(req, res) {
@@ -39,36 +43,70 @@ app.post('/submit-data', function(req, res) {
     let email = req.body.email;
     let password0 = req.body.password;
     let password = bcrypt.hashSync(password0, salt);
-    //let query = `SELECT * FROM users WHERE username = '${username}'`;
-    let checkValue = username;
-    let checkValue2 = email;
-
     let query = `SELECT username FROM users WHERE username = ?`;
     let query2 = `SELECT email FROM users WHERE email = ?`;
+    let checkValue = username;
+    let checkValue2 = email;
+    let username_exists = false;
+    let email_exists = false;
 
     db.get(query, [checkValue], (err, row) => {
-    if (err) {
-        console.error(err.message);
-    } else if (row) {
-        console.log(`${checkValue} is in the database.`);
+        if (err) {
+            console.error(err.message);
+            // Handle the error appropriately
+            return;
+        } else if (row) {
+            console.log(`${checkValue} is in the database.`);
+            username_exists = true;
+        } else {
+            console.log(`${checkValue} is not in the database.`);
+        }
 
-    } else {
-        console.log(`${checkValue} is not in the database.`);
-        username_exists = false;
-    }
+        if (!email_exists) {
+            db.get(query2, [checkValue2], (err, row) => {
+                if (err) {
+                    console.error(err.message);
+                    // Handle the error appropriately
+                    return;
+                } else if (row) {
+                    console.log(`${checkValue2} is in the database.`);
+                    email_exists = true;
+                } else {
+                    console.log(`${checkValue2} is not in the database.`);
+                }
+
+                if (!username_exists && !email_exists) {
+                    console.log('creating a user');
+                    db.run(`INSERT INTO users (username, email, password) VALUES (?, ?, ?)`, [username, email, password]);
+                    res.send('Your user has been created');
+                }
+            });
+        }
+    });
 });
-db.get(query2, [checkValue2], (err, row) => {
-    if (err) {
-        console.error(err.message);
-    } else if (row) {
-        console.log(`${checkValue2} is in the database.`);
-    } else {
-        console.log(`${checkValue2} is not in the database.`);
-        email_exists = false;
-    }
-});
-    if (username_exists == false && email_exists == false) {
-        console.log('it created a user');
-        db.run(`INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${password}')`);
-    }
+
+
+app.post('/submit-login-data', function(req, res) {
+    let email = req.body.email;
+    let password = req.body.password;
+    let query = `SELECT * FROM users WHERE email = ?`;
+
+    db.get(query, [email], (err, row) => {
+        if (err) {
+            console.error(err.message);
+        } else if (row) {
+            bcrypt.compare(password, row.password, function(err, result) {
+                if (err) {
+                    console.error(err.message);
+                } else if (result) {
+                    console.log(`${email} and password are correct.`);
+                    res.send('You are logged in now');
+                } else {
+                    console.log('Password is incorrect.');
+                }
+            });
+        } else {
+            console.log(`${email} is not in the database.`);
+        }
+    });
 });
