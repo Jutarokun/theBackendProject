@@ -8,8 +8,10 @@ const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 let login_email_exists = false;
 let login_password_exists = false;
+let root = './public';
+let result = false;
 
-app.use(express.static("/public"));
+app.use(express.static('public/css'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,8 +38,17 @@ app.get("/login2.html", function (req, res) {
     res.sendFile(__dirname + "/public/login2.html");
   });
 
-  app.get("/login.html", function (req, res) {
-    res.sendFile(__dirname + "/public/login.html");
+  app.get("/home.html", function (req, res) {
+    res.sendFile(__dirname + "/public/home.html");
+  });
+  app.get("/about-Us.html", function (req, res) {
+    res.sendFile(__dirname + "/public/aboutUs.html");
+  });
+  app.get("/penguins.html", function (req, res) {
+    res.sendFile(__dirname + "/public/penguins.html");
+  });
+  app.get("/natural-Habitat.html", function (req, res) {
+    res.sendFile(__dirname + "/public/naturalHabitat.html");
   });
 
 //taking the data from the frontend
@@ -104,7 +115,7 @@ app.post('/submit-login-data', function(req, res) {
                     console.error(err.message);
                 } else if (result) {
                     console.log(`${email} and password are correct.`);
-                    res.sendFile(__dirname + '/public/index.html');
+                    res.redirect('/home.html');
                 } else {
                     console.log('Password is incorrect.');
                 }
