@@ -13,6 +13,8 @@ let result = false;
 
 app.use(express.static('public/css'));
 
+app.use('/assets', express.static('public/assets'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //making a localhost on port 3001

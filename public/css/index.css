@@ -207,7 +207,229 @@ body {
 
   form {
     display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+  .backgroundImage {
+    background-image: url("/assets/youngPenguin.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .box {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0077be, #0087cf);
+    color: #fff;
+    border: 2px solid #0077be;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+  }
+  .full-box {
+    background-color: #0077be;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+    margin-top: 20%;
+    border-radius: 10px;
+  }
+  
+  .full-box img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+  }
+  
+  .full-box h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .full-box p {
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .full-box img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 30%;
+  }
+  .informationboxLeft {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0077be, #0087cf);
+    color: #fff;
+    border: 2px solid #0077be;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+  }
+  .informationboxLeft img {
+    float: left;
+    margin-right: 20px;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+  .informationboxLeft h2 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+  }
+  .informationboxLeft p {
+    font-size: 18px;
+    margin: 10px 0 0;
+  }
+  .informationboxRight {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0077be, #0087cf);
+    color: #fff;
+    border: 2px solid #0077be;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+  }
+  .informationboxRight img {
+    float: right;
+    margin-right: 20px;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+  .informationboxRight h2 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+  }
+  .informationboxRight p {
+    font-size: 18px;
+    margin: 10px 0 0;
+  }
+  .backgroundImageHabitat {
+    background-image: url("/assets/antarctica.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .containerHabitat {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #0077be;
+    box-shadow: 0px 0px 20px #0077be;
+    }
+    
+    .boxHabitat {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    }
+    
+    .boxHabitat img {
+    float: left;
+    margin-left: 20px;
+    width: 30%;
+    border-radius: 10%;
+    }
+    
+    .boxHabitat h2 {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .boxHabitat p {
+    font-size: 18px;
+    margin: 10px 0 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .blueBox {
+      margin-top: 10%;
+      background-color: #0077be;
+      box-shadow: 0px 0px 20px #0077be;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    .blueBoxContent {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+    
+    .blueBoxImage {
+      width: 30%;
+      border-radius: 10%;
+      margin-left: 20px;
+    }
+    
+    .blueBoxText {
+      text-align: left;
+      padding-right: 5%;
+    }
+    
+    .blueBox h2 {
+      font-size: 24px;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .blueBox p {
+      font-size: 18px;
+      margin: 10px 0 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .map-container {
+      margin-top: 10%;
+      border: 2px solid #0077be;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .backgroundImageImpress {
+      background-image: url("/assets/penguin.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    .impressumBox {
+      background-color: #0077be;
+      color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 20px #0077be;
+    }
+    
+    .impressumBox h2 {
+      text-align: center;
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+    
+    .impressumBox p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
